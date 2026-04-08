@@ -4,6 +4,5 @@ body {
        */
     font: 100%/1.5 system-ui;
     max-width: 80ch;
-    margin-inline: auto;
-  
+    margin-inline: max(1em, (100% - 100ch) / 2);  
 }
