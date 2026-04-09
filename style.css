@@ -10,3 +10,7 @@ body {
 nav {
   display: flex;
 }
+
+a {
+  flex: 1;
+}
