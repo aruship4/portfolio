@@ -89,3 +89,26 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
+/* resume */
+.resume section {
+  margin-bottom: 1.5rem;
+}
+
+.resume section h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.resume section hr {
+  border: none;
+  border-top: 1.5px solid currentColor;
+  opacity: 0.2;
+  margin-bottom: 0.5rem;
+}
+
+.resume section h3 {
+  font-size: 1rem;
+  margin-top: 0.75rem;
+}
