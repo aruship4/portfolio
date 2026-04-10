@@ -73,3 +73,8 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+
+.resume h2 {
+  border-bottom: 2px solid oklch(80% 3% 200);
+  padding-bottom: 0.25rem;
+}
