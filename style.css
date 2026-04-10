@@ -25,6 +25,8 @@ nav a {
 nav a.current {
   border-bottom: 0.4em solid oklch(80% 3% 200);
   padding-bottom: 0.1em;
+  font-weight: bold;
+
 }
 
 :root {
@@ -39,4 +41,10 @@ nav a:hover {
   text-decoration: none;
   border-bottom: 2px solid var(--color-accent);
   background-color: oklch(from var(--color-accent) 95% 5% h)
+}
+
+input,
+textarea,
+button {
+  font: inherit;
 }
