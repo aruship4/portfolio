@@ -16,23 +16,27 @@ let pages = [
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
+  
+    const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+      ? "/"
+      : "/website/";
+  
+    if (!url.startsWith('http')) {
+      url = BASE_PATH + url;
+    }
+  
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
+
+    a.classList.toggle(
+        'current',
+        a.host === location.host && a.pathname === location.pathname
+      );
+
+    if (a.host !== location.host) {
+        a.target = "_blank";
+    }
     nav.append(a);
   }
 
-  const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "/"                  // Local server
-  : "/website/";         // GitHub Pages repo name
-
-url = !url.startsWith('http') ? BASE_PATH + url : url;
-
-// let navLinks = $$("nav a");
-// console.log(navLinks);
-
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname,
-//   );
-
-// currentLink?.classList.add("current");
