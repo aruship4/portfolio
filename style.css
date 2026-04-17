@@ -117,3 +117,10 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   margin-top: 0.75rem;
 }
+
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
