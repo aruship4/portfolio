@@ -15,7 +15,7 @@ nav {
   border-bottom: 1px solid;
   border-bottom-color: var(--border-color);
   margin-bottom: 1rem;
-  padding-right: 6rem
+  padding-right: 4rem;
 
 }
 
@@ -122,6 +122,6 @@ h1, h2, h3, h4, h5, h6 {
 .color-scheme {
   position: absolute;
   top: 0.75rem;
-  right: 1rem;
+  right: 0.75rem;
   font-size: 80%;
 }
