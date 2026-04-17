@@ -54,3 +54,8 @@ document.body.insertAdjacentHTML(
   );
 
 
+const select = document.querySelector('select');
+
+select.addEventListener('change', (event) => {
+    document.documentElement.style.colorScheme = event.target.value;
+  });
