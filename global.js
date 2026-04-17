@@ -73,3 +73,23 @@ select.addEventListener('input', function (event) {
 
 });
 
+
+const form = document.querySelector('form');
+
+form?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const data = new FormData(form);
+
+  let url = form.action + "?";
+  let params = [];
+
+  for (let [name, value] of data) {
+    params.push(`${name}=${encodeURIComponent(value)}`);
+  }
+
+  url += params.join("&");
+
+  location.href = url;
+});
+
