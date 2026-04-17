@@ -7,7 +7,6 @@ body {
     font: 100%/1.5 system-ui;
     max-width: 100ch;
     margin-inline: max(1em, (100% - 100ch) / 2);  
-    position: relative;
 }
 
 nav {
@@ -120,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .color-scheme {
-  position: fixed;
+  position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 80%;
