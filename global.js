@@ -110,5 +110,5 @@ export async function fetchJSON(url) {
   }
 }
 
-const data = await fetchJSON('./projects.json');
+const data = await fetchJSON('./lib/projects.json');
 console.log(data);
