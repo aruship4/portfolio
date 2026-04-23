@@ -116,6 +116,7 @@ console.log(data);
 
 export function renderProjects(project, containerElement) {
   containerElement.innerHTML = '';
+  containerElement = null;
 
   for(let project of projects){
     const article = document.createElement('article');
@@ -126,7 +127,7 @@ export function renderProjects(project, containerElement) {
     <p>${project.description}</p>
   ` ;
 
-    containerElement.appendChild(article);
+  containerElement.appendChild(article);
 
   }
 }
