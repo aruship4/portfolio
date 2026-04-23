@@ -112,3 +112,21 @@ export async function fetchJSON(url) {
 
 const data = await fetchJSON('/portfolio/lib/projects.json');
 console.log(data);
+
+
+export function renderProjects(project, containerElement) {
+  containerElement.innerHTML = '';
+
+  for(let project of projects){
+    const article = document.createElement('article');
+
+    article.innerHTML = `
+    <h3>${project.title}</h3>
+    <img src="${project.image}" alt="${project.title}">
+    <p>${project.description}</p>
+  ` ;
+
+    containerElement.appendChild(article);
+
+  }
+}
