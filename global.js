@@ -116,7 +116,6 @@ console.log(data);
 
 export function renderProjects(project, containerElement) {
   containerElement.innerHTML = '';
-  containerElement = null;
 
   for(let project of projects){
     const article = document.createElement('article');
