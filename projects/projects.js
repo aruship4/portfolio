@@ -4,7 +4,7 @@ const projects = await fetchJSON('../lib/projects.json');
 
 const titleElement = document.querySelector('.projects-title');
 if (titleElement) {
-  titleElement.textContent = `Projects (${projects.length})`;
+  titleElement.textContent = `${projects.length} Projects`;
 }
 
 
