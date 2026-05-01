@@ -21,6 +21,8 @@ let rolledData = d3.rollups(
   (d) => d.year
 );
 
+console.log(rolledData);
+
 let data = rolledData.map(([year, count]) => {
   return { value: count, label: year };
 });
