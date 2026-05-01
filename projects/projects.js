@@ -41,11 +41,11 @@ for (let d of data) {
 }
 
 let arcs = arcData.map((d) => arcGenerator(d));
+let colors = ['gold', 'purple'];
 
 arcs.forEach((arc, idx) => {
   d3.select('svg')
     .append('path')
     .attr('d', arc)
-    .attr(fill, colors[idx]) // Fill in the attribute for fill color via indexing the colors variable
+    .attr('fill', colors[idx]) // Fill in the attribute for fill color via indexing the colors variable
 })
-let colors = ['gold', 'purple'];
