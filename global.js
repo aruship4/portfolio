@@ -130,14 +130,8 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   containerElement.appendChild(article);
 
   }
-
-
-  const projectsContainer = document.querySelector('.projects');
   const title = document.querySelector('.projects-title');
-
-  const projectCount = projectsContainer.querySelectorAll('article').length;
-
-  title.textContent = `${projectCount} Projects`;
+  title.textContent = `${projects.length} Projects`;
 }
 
 
