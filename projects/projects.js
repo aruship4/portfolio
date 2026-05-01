@@ -14,6 +14,9 @@ renderProjects(projects, projectsContainer, 'h2');
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
+let selectedIndex = -1;
+
+
 function renderPieChart(projectsGiven) {
   // clear old paths and legend
   d3.select('#projects-pie-plot').selectAll('path').remove();
@@ -33,12 +36,30 @@ function renderPieChart(projectsGiven) {
   let arcData = sliceGenerator(data);
   let arcs = arcData.map((d) => arcGenerator(d));
 
+  let svg = d3.select('svg');
+  svg.selectAll('path').remove();
+
   arcs.forEach((arc, idx) => {
-    d3.select('#projects-pie-plot')
+    svg
       .append('path')
       .attr('d', arc)
-      .attr('fill', colors(idx));
-  });
+      .attr('fill', colors(idx))
+      .on('click', () => {
+        selectedIndex = selectedIndex === i ? -1 : idx;
+        
+          d3.select('#projects-pie-plot')
+            .selectAll('path')
+            .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
+        
+          d3.select('.legend')
+            .selectAll('li')
+            .attr('class', (_, idx) => idx === selectedIndex ? 'legend-item selected' : 'legend-item');
+
+          legend
+            .selectAll('li')
+            .attr('class', (_, idx) => idx === selectedIndex ? 'legend-item selected' : 'legend-item');
+        });
+      });
 
   let legend = d3.select('.legend');
   data.forEach((d, idx) => {
