@@ -12,46 +12,51 @@ const projectsContainer = document.querySelector('.projects');
 renderProjects(projects, projectsContainer, 'h2');
 
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
-let sliceGenerator = d3.pie().value((d) => d.value);
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-let rolledData = d3.rollups(
-  projects,
-  (v) => v.length,
-  (d) => d.year
-);
+function renderPieChart(projectsGiven) {
+  // clear old paths and legend
+  d3.select('#projects-pie-plot').selectAll('path').remove();
+  d3.select('.legend').selectAll('li').remove();
 
-console.log(rolledData);
+  let rolledData = d3.rollups(
+    projectsGiven,
+    (v) => v.length,
+    (d) => d.year
+  );
 
-let data = rolledData.map(([year, count]) => {
-  return { value: count, label: year };
-});
+  let data = rolledData.map(([year, count]) => {
+    return { value: count, label: year };
+  });
 
-let arcData = sliceGenerator(data);
-let arcs = arcData.map((d) => arcGenerator(d));
+  let sliceGenerator = d3.pie().value((d) => d.value);
+  let arcData = sliceGenerator(data);
+  let arcs = arcData.map((d) => arcGenerator(d));
 
-arcs.forEach((arc, idx) => {
-  d3.select('#projects-pie-plot')
-    .append('path')
-    .attr('d', arc)
-    .attr('fill', colors(idx));
-});
+  arcs.forEach((arc, idx) => {
+    d3.select('#projects-pie-plot')
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', colors(idx));
+  });
 
-let legend = d3.select('.legend');
-data.forEach((d, idx) => {
-  legend
-    .append('li')
-    .attr('style', `--color:${colors(idx)}`)
-    .attr('class', 'legend-item')
-    .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
-});
+  let legend = d3.select('.legend');
+  data.forEach((d, idx) => {
+    legend
+      .append('li')
+      .attr('style', `--color:${colors(idx)}`)
+      .attr('class', 'legend-item')
+      .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+  });
+}
+
+// call on page load
+renderPieChart(projects);
 
 let query = '';
-
 let searchInput = document.querySelector('.searchBar');
 
 searchInput.addEventListener('input', (event) => {
-
   query = event.target.value;
 
   let filteredProjects = projects.filter((project) => {
@@ -60,4 +65,5 @@ searchInput.addEventListener('input', (event) => {
   });
 
   renderProjects(filteredProjects, projectsContainer, 'h2');
+  renderPieChart(filteredProjects);  // re-render pie chart with filtered data
 });
