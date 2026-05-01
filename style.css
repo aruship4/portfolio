@@ -85,7 +85,7 @@ button {
   grid-row: span 3;
   gap: 1em;
 }
-
+/* projects */
 .project-details {
   display: flex;
   flex-direction: column;
@@ -96,6 +96,13 @@ button {
 
   font-family: Baskerville, serif;
   font-variant-numeric: oldstyle-nums;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+
+  overflow: visible;
 }
 
 h1 {
