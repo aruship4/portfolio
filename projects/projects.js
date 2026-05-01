@@ -45,7 +45,7 @@ function renderPieChart(projectsGiven) {
       .attr('d', arc)
       .attr('fill', colors(idx))
       .on('click', () => {
-        selectedIndex = selectedIndex === i ? -1 : idx;
+        selectedIndex = selectedIndex === idx? -1 : idx;
         
           d3.select('#projects-pie-plot')
             .selectAll('path')
