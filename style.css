@@ -103,6 +103,7 @@ button {
   margin-block: 2em;
 
   overflow: visible;
+  flex-shrink: 0;
 }
 
 h1 {
