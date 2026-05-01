@@ -50,7 +50,7 @@ let query = '';
 
 let searchInput = document.querySelector('.searchBar');
 
-searchInput.addEventListener('change', (event) => {
+searchInput.addEventListener('input', (event) => {
 
   query = event.target.value;
 
