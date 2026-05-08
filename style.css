@@ -210,3 +210,27 @@ h1, h2, h3, h4, h5, h6 {
     fill: var(--color);
   }
 }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 1rem;
+
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.stats dt {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #777;
+}
+
+.stats dd {
+  margin: 0.25rem 0 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
