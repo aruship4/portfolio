@@ -110,7 +110,7 @@ function renderScatterPlot(data, commits) {
 
     xScale.range([usableArea.left, usableArea.right]);
     yScale.range([usableArea.bottom, usableArea.top]);
-    
+
     dots
         .selectAll('circle')
         .data(sortedCommits)
@@ -214,4 +214,10 @@ function updateTooltipPosition(event) {
     const tooltip = document.getElementById('commit-tooltip');
     tooltip.style.left = `${event.clientX}px`;
     tooltip.style.top = `${event.clientY}px`;
+  }
+
+function createBrushSelector(svg) {
+    svg.call(d3.brush());
+    svg.selectAll('.dots, .overlay ~ *').raise();
+
   }
