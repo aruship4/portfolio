@@ -213,26 +213,26 @@ h1, h2, h3, h4, h5, h6 {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   gap: 1rem;
-
   padding: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid oklch(50% 10% 200 / 40%);
   border-radius: 12px;
 }
 
 .stats dt {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #777;
+  color: color-mix(in oklch, canvastext, canvas 40%);
+  grid-row: 1;
 }
 
 .stats dd {
   margin: 0.25rem 0 0;
   font-size: 1.5rem;
-  font-weight: bold;
-  align-items: baseline;
+  font-weight: normal;
+  grid-row: 2;
 }
 
 dl.info {
