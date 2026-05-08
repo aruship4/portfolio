@@ -108,6 +108,9 @@ function renderScatterPlot(data, commits) {
     
     const dots = svg.append('g').attr('class', 'dots');
 
+    xScale.range([usableArea.left, usableArea.right]);
+    yScale.range([usableArea.bottom, usableArea.top]);
+    
     dots
         .selectAll('circle')
         .data(sortedCommits)
@@ -141,8 +144,7 @@ function renderScatterPlot(data, commits) {
         height: height - margin.top - margin.bottom,
     };
 
-    xScale.range([usableArea.left, usableArea.right]);
-    yScale.range([usableArea.bottom, usableArea.top]);
+
     // Add gridlines BEFORE the axes
     const gridlines = svg
     .append('g')
