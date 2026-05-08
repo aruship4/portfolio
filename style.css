@@ -241,6 +241,8 @@ dl.info {
   gap: 0.25rem 1rem;
 
   margin: 0;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
 }
 
 dl.info dt {
@@ -255,6 +257,10 @@ dl.info dd {
   font-weight: 700;
 }
 
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
 
 .tooltip {
   position: fixed;

@@ -67,13 +67,13 @@ function renderCommitInfo(data, commits) {
     dl.append('dd').text(numFiles);
 
     // longest line
-    const longestLine = d3.max(data, d => d.length)
+    const longestLine = d3.max(data, d => +d.length)
 
     dl.append('dt').text('Longest Line')
     dl.append('dd').text(longestLine);
 
     // average line length
-    const avgLineLength = d3.mean(data, d => d.length);
+    const avgLineLength = d3.mean(data, d => +d.length);
 
     dl.append('dt').text('Average line length');
     dl.append('dd').text(avgLineLength.toFixed(1));
