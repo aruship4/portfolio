@@ -234,3 +234,55 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 2rem;
   font-weight: bold;
 }
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1rem;
+
+  margin: 0;
+}
+
+dl.info dt {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
+}
+
+dl.info dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  padding: 0.75rem 1rem;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+  font-size: 0.85rem;
+  pointer-events: none;
+
+  max-width: 220px;
+  
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
