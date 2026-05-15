@@ -1,9 +1,9 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
-        "year": "2020",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quidem adipisci assumenda sapiente consequuntur excepturi odit, quas commodi delectus fugiat dolore consequatur ipsum eveniet in aut vel deleniti sequi. Dolorem?"
+        "title": "Bikewatching.",
+        "year": "2026",
+        "image": "bikewatching.png",
+        "description": "Bikewatching project made for DSC 106."
     },
     {
         "title": "Quia vitae enim aspernatur.",
