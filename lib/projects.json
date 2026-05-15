@@ -1,8 +1,8 @@
 [
     {
-        "title": "Bikewatching.",
+        "title": "Bikewatching",
         "year": "2026",
-        "image": "bikewatching.png",
+        "image": "./bikewatching.png",
         "description": "Bikewatching project made for DSC 106."
     },
     {
