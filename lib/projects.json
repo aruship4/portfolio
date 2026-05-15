@@ -2,7 +2,7 @@
     {
         "title": "Bikewatching",
         "year": "2026",
-        "image": "./bikewatching.png",
+        "image": "https://aruship4.github.io/portfolio/lib/bikewatching.png",
         "description": "Bikewatching project made for DSC 106."
     },
     {
