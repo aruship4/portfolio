@@ -182,6 +182,35 @@ function renderScatterPlot(data, commits) {
 let data = await loadData();
 let commits = processCommits(data);
     
+let commitProgress = 100;
+
+let timeScale = d3
+  .scaleTime()
+  .domain([
+    d3.min(commits, (d) => d.datetime),
+    d3.max(commits, (d) => d.datetime),
+  ])
+  .range([0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+
+const timeSlider = document.getElementById('commit-progress');
+const timeDisplay = document.getElementById('commit-slider-time');
+
+function onTimeSliderChange() {
+  // Update progress from slider
+  commitProgress = +timeSlider.value;
+
+  // Convert slider percentage to actual date
+  commitMaxTime = timeScale.invert(commitProgress);
+
+  // Display formatted date/time
+  timeDisplay.textContent = commitMaxTime.toLocaleString();
+}
+timeSlider.addEventListener('input', onTimeSliderChange);
+
+onTimeSliderChange();
+
+
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 
