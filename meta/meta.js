@@ -222,7 +222,7 @@ function updateScatterPlot(data, commits) {
   const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
 
   const xAxis = d3.axisBottom(xScale);
-  
+
   const xAxisGroup = svg.select('g.x-axis');
   xAxisGroup.selectAll('*').remove();
   xAxisGroup.call(xAxis);
@@ -271,12 +271,13 @@ function onTimeSliderChange() {
 
 timeSlider.addEventListener('input', onTimeSliderChange);
 
+renderCommitInfo(data, commits);
+renderScatterPlot(data, commits);
+
 onTimeSliderChange();
 
 
 
-renderCommitInfo(data, commits);
-renderScatterPlot(data, commits);
 
 function renderTooltipContent(commit) {
     const link = document.getElementById('commit-link');
