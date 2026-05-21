@@ -212,6 +212,9 @@ function onTimeSliderChange() {
 
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
 
+  renderScatterPlot(data, filteredCommits);
+
+
 }
 timeSlider.addEventListener('input', onTimeSliderChange);
 
