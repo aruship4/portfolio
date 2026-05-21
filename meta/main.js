@@ -196,6 +196,10 @@ let commitMaxTime = timeScale.invert(commitProgress);
 const timeSlider = document.getElementById('commit-progress');
 const timeDisplay = document.getElementById('commit-slider-time');
 
+
+let filteredCommits = commits;
+
+
 function onTimeSliderChange() {
   // Update progress from slider
   commitProgress = +timeSlider.value;
@@ -205,10 +209,14 @@ function onTimeSliderChange() {
 
   // Display formatted date/time
   timeDisplay.textContent = commitMaxTime.toLocaleString();
+
+  filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+
 }
 timeSlider.addEventListener('input', onTimeSliderChange);
 
 onTimeSliderChange();
+
 
 
 renderCommitInfo(data, commits);
