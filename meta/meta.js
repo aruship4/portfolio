@@ -202,7 +202,6 @@ const timeDisplay = document.getElementById('commit-slider-time');
 
 
 let filteredCommits = commits;
-let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 
 
@@ -215,6 +214,7 @@ function updateFileDisplay(filteredCommits){
   })
   .sort((a, b) => b.lines.length - a.lines.length);
 
+  let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
   let filesContainer = d3
   .select('#files')
@@ -227,9 +227,6 @@ function updateFileDisplay(filteredCommits){
         div.append('dt').append('code');
         div.append('dd');
       }),
-
-    (update) => update,
-    (exit) => exit.remove()
   );
 
   // This code updates the div info
@@ -252,7 +249,7 @@ function updateFileDisplay(filteredCommits){
   .attr('style', (d) => `--color: ${colors(d.type)}`);
 }
 
-function updateScatterPlot(data, filteredData) {
+function updateScatterPlot(data, commits) {
   const width = 1000;
   const height = 600;
   const margin = { top: 10, right: 10, bottom: 30, left: 20 };
@@ -269,7 +266,7 @@ function updateScatterPlot(data, filteredData) {
 
   xScale = xScale.domain(d3.extent(commits, (d) => d.datetime));
 
-  const [minLines, maxLines] = d3.extent(filteredData, (d) => d.totalLines);
+  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
   const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
 
   const xAxis = d3.axisBottom(xScale);
@@ -280,14 +277,14 @@ function updateScatterPlot(data, filteredData) {
 
   const dots = svg.select('g.dots');
 
-  const sortedCommits = d3.sort(filteredData, (d) => -d.totalLines);
+  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
   dots
     .selectAll('circle')
     .data(sortedCommits, (d) => d.id) // change this line
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
-    .style('r', (d) => `${rScale(d.totalLines)}px`)
+    .attr('r', (d) => rScale(d.totalLines))
     .attr('fill', 'steelblue')
     .style('fill-opacity', 0.7) // Add transparency for overlapping dots
     .on('mouseenter', (event, commit) => {
@@ -468,24 +465,10 @@ d3.select('#scatter-story')
   );
 
 
-  let lastCommitTime = null;
-
-  function onStepEnter(response) {
-    const commit = response.element.__data__;
-  
-    if (lastCommitTime === commit.datetime) return;
-    lastCommitTime = commit.datetime;
-  
-    filteredCommits = commits.filter(d => d.datetime <= commit.datetime);
-  
-    updateScatterPlot(data, filteredCommits);
-    updateFileDisplay(filteredCommits);
-  
-    d3.select('#stats').html('');
-    const filteredLines = filteredCommits.flatMap(d => d.lines);
-    renderCommitInfo(filteredLines, filteredCommits);
+function onStepEnter(response) {
+    console.log(response);
   }
-
+  
 const scroller = scrollama();
 scroller
     .setup({
@@ -494,3 +477,6 @@ scroller
     })
     .onStepEnter(onStepEnter);
 
+function onStepEnter(response) {
+    console.log(response.element.__data__.datetime);
+}
