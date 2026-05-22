@@ -235,8 +235,7 @@ function updateFileDisplay(filteredCommits){
       <code>${d.name}</code>
       <small>${d.lines.length} lines</small>
     `
-  )
-  .attr('style', (d) => `--color: ${colors(d.type)}`);
+  );
 
 
   filesContainer
@@ -244,7 +243,8 @@ function updateFileDisplay(filteredCommits){
   .selectAll('div')
   .data((d) => d.lines)
   .join('div')
-  .attr('class', 'loc');
+  .attr('class', 'loc')
+  .attr('style', (d) => `--color: ${colors(d.type)}`);
 }
 
 function updateScatterPlot(data, commits) {
