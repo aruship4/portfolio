@@ -48,6 +48,7 @@ function processCommits(data) {
 
 
 function renderCommitInfo(data, commits) {
+    d3.select('#stats').html('');
     // Create the dl element
     const dl = d3.select('#stats').append('dl').attr('class', 'stats');
   
