@@ -202,6 +202,7 @@ const timeDisplay = document.getElementById('commit-slider-time');
 
 
 let filteredCommits = commits;
+let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 
 
@@ -214,7 +215,6 @@ function updateFileDisplay(filteredCommits){
   })
   .sort((a, b) => b.lines.length - a.lines.length);
 
-  let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
   let filesContainer = d3
   .select('#files')
@@ -227,6 +227,9 @@ function updateFileDisplay(filteredCommits){
         div.append('dt').append('code');
         div.append('dd');
       }),
+
+    (update) => update,
+    (exit) => exit.remove()
   );
 
   // This code updates the div info
