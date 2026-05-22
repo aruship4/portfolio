@@ -267,9 +267,9 @@ function updateScatterPlot(data, filteredData) {
 
   const svg = d3.select('#chart').select('svg');
 
-  xScale = xScale.domain(d3.extent(filteredData, (d) => d.datetime));
+  xScale = xScale.domain(d3.extent(commits, (d) => d.datetime));
 
-  const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
+  const [minLines, maxLines] = d3.extent(filteredData, (d) => d.totalLines);
   const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
 
   const xAxis = d3.axisBottom(xScale);
