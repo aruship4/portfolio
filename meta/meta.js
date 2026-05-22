@@ -280,7 +280,7 @@ function updateScatterPlot(data, filteredData) {
 
   const dots = svg.select('g.dots');
 
-  const sortedCommits = d3.sort(commits, (d) => -d.totalLines);
+  const sortedCommits = d3.sort(filteredData, (d) => -d.totalLines);
   dots
     .selectAll('circle')
     .data(sortedCommits, (d) => d.id) // change this line
@@ -468,15 +468,24 @@ d3.select('#scatter-story')
   );
 
 
-function onStepEnter(response) {
-  const commit = response.element.__data__;
-  filteredCommits = commits.filter(d => d.datetime <= commit.datetime);
-  updateScatterPlot(data, filteredCommits);
-  updateFileDisplay(filteredCommits);
-  d3.select('#stats').html('');
-  const filteredLines = filteredCommits.flatMap(d => d.lines);
-  renderCommitInfo(filteredLines, filteredCommits);
-}
+  let lastCommitTime = null;
+
+  function onStepEnter(response) {
+    const commit = response.element.__data__;
+  
+    if (lastCommitTime === commit.datetime) return;
+    lastCommitTime = commit.datetime;
+  
+    filteredCommits = commits.filter(d => d.datetime <= commit.datetime);
+  
+    updateScatterPlot(data, filteredCommits);
+    updateFileDisplay(filteredCommits);
+  
+    d3.select('#stats').html('');
+    const filteredLines = filteredCommits.flatMap(d => d.lines);
+    renderCommitInfo(filteredLines, filteredCommits);
+  }
+
 const scroller = scrollama();
 scroller
     .setup({
