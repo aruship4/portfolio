@@ -252,7 +252,7 @@ function updateFileDisplay(filteredCommits){
   .attr('style', (d) => `--color: ${colors(d.type)}`);
 }
 
-function updateScatterPlot(data, commits) {
+function updateScatterPlot(data, filteredData) {
   const width = 1000;
   const height = 600;
   const margin = { top: 10, right: 10, bottom: 30, left: 20 };
@@ -267,7 +267,7 @@ function updateScatterPlot(data, commits) {
 
   const svg = d3.select('#chart').select('svg');
 
-  xScale = xScale.domain(d3.extent(commits, (d) => d.datetime));
+  xScale = xScale.domain(d3.extent(filteredData, (d) => d.datetime));
 
   const [minLines, maxLines] = d3.extent(commits, (d) => d.totalLines);
   const rScale = d3.scaleSqrt().domain([minLines, maxLines]).range([2, 30]);
