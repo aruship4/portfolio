@@ -287,7 +287,7 @@ function updateScatterPlot(data, filteredData) {
     .join('circle')
     .attr('cx', (d) => xScale(d.datetime))
     .attr('cy', (d) => yScale(d.hourFrac))
-    .attr('r', (d) => rScale(d.totalLines))
+    .style('r', (d) => `${rScale(d.totalLines)}px`)
     .attr('fill', 'steelblue')
     .style('fill-opacity', 0.7) // Add transparency for overlapping dots
     .on('mouseenter', (event, commit) => {
