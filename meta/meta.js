@@ -209,7 +209,11 @@ function updateFileDisplay(filteredCommits){
   .groups(lines, (d) => d.file)
   .map(([name, lines]) => {
     return { name, lines };
-  });
+  })
+  .sort((a, b) => b.lines.length - a.lines.length);
+
+  let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
   let filesContainer = d3
   .select('#files')
   .selectAll('div')
@@ -231,7 +235,8 @@ function updateFileDisplay(filteredCommits){
       <code>${d.name}</code>
       <small>${d.lines.length} lines</small>
     `
-  );
+  )
+  .attr('style', (d) => `--color: ${colors(d.type)}`);
 
 
   filesContainer
@@ -388,45 +393,4 @@ function brushed(event) {
         const container = document.getElementById('language-breakdown');
       
         if (selectedCommits.length === 0) {
-          container.innerHTML = '';
-          return;
-        }
-        const requiredCommits = selectedCommits.length ? selectedCommits : commits;
-        const lines = requiredCommits.flatMap((d) => d.lines);
-      
-        // Use d3.rollup to count lines per language
-        const breakdown = d3.rollup(
-          lines,
-          (v) => v.length,
-          (d) => d.type,
-        );
-      
-        // Update DOM with breakdown
-        container.innerHTML = '';
-      
-        for (const [language, count] of breakdown) {
-          const proportion = count / lines.length;
-          const formatted = d3.format('.1~%')(proportion);
-      
-          container.innerHTML += `
-                  <dt>${language}</dt>
-                  <dd>${count} lines (${formatted})</dd>
-              `;
-        }
-      }
-  }
-
-
-function isCommitSelected(selection, commit) {
-    if (!selection) {
-      return false;
-    }
-    
-    const [[x0, y0], [x1, y1]] = selection;
-
-    const x = xScale(commit.datetime);
-    const y = yScale(commit.hourFrac);
-
-    return x >= x0 && x <= x1 && y >= y0 && y <= y1;
-  }
-
+        
