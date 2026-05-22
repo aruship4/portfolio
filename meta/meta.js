@@ -233,7 +233,7 @@ function updateFileDisplay(filteredCommits){
     `
   );
 
-  
+
   filesContainer
   .select('dd')
   .selectAll('div')
@@ -309,7 +309,8 @@ function onTimeSliderChange() {
   updateFileDisplay(filteredCommits);
 
   d3.select('#stats').html('');
-  renderCommitInfo(data, filteredCommits);
+  const filteredLines = filteredCommits.flatMap(d => d.lines);
+  renderCommitInfo(filteredLines, filteredCommits); 
 }
 
 

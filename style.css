@@ -207,7 +207,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1rem;
   padding: 1rem;
   border: 1px solid oklch(50% 10% 200 / 40%);
@@ -364,4 +364,8 @@ dd {
   gap: 0.15em;
   padding-top: 0.6em;
   margin-left: 0;
+}
+
+.stats {
+  align-items: start;
 }
