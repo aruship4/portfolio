@@ -355,7 +355,7 @@ background: var(--color);
 border-radius: 50%;
 }
 
-dd {
+#files dd {
 grid-column: 2;
 display: flex;
 flex-wrap: wrap;
