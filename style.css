@@ -281,8 +281,12 @@ circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
-  @starting-style {
-      r: 0;
+
+}
+
+@starting-style {
+  circle {
+    r: 0;
   }
 }
 
@@ -391,4 +395,8 @@ circle.selected {
   left: 0;
   bottom: auto;
   height: 50vh;
+}
+
+#stats {
+  min-height: 120px;
 }
