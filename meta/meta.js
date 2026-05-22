@@ -466,9 +466,8 @@ d3.select('#scatter-story')
 
 
 function onStepEnter(response) {
-    console.log(response);
-  }
-  
+    console.log(response.element.__data__.datetime);
+}
 const scroller = scrollama();
 scroller
     .setup({
@@ -477,6 +476,3 @@ scroller
     })
     .onStepEnter(onStepEnter);
 
-function onStepEnter(response) {
-    console.log(response.element.__data__.datetime);
-}
