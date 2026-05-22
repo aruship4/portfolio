@@ -265,7 +265,8 @@ function onTimeSliderChange() {
 
   updateScatterPlot(data, filteredCommits);
 
-
+  d3.select('#stats').html('');
+  renderCommitInfo(data, filteredCommits);
 }
 
 
