@@ -281,14 +281,12 @@ circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
-
-}
-
-@starting-style {
-  circle {
+  @starting-style {
     r: 0;
   }
+
 }
+
 
 
 
