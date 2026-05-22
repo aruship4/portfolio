@@ -392,3 +392,8 @@ align-items: start;
   bottom: auto;
   height: 50vh;
 }
+
+.step {
+  padding-block: 4rem;
+  border-bottom: 1px solid oklch(50% 10% 200 / 40%);
+}
